@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&family=Varela+Round&display=swap');
+
+body {
+    background-color: #141E30;
+    font-family: 'Varela Round', sans-serif;
+    color: #f4eeff;
+}
+.navbar {
+    background-color: #141E30;
+    color: #fcf8f3;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: larger;
+}
+.navbar-brand {
+    padding: 7px 12px;
+}
+.container-fluid {
+    padding: 3% 15% 7%;
+}
+.nav-item {
+    padding: 0 15px;
+}
+.qna-section, .about-section {
+    margin-top: 5%;
+    height: fit-content;
+    width: auto;
+    background: rgba(20, 30, 48, 0.9) !important;
+    padding: 10px;
+}
+.qna-section h1 {
+    margin-bottom: 5%;
+}
+.about-section h2 {
+    margin-bottom: 2%;
+    margin-left: 5%;
+    font-family: 'Ubuntu', sans-serif;
+}
+.btn-block {
+    background-color: #a6b1e1;
+}
+.about-section ul, p{
+    margin-left: 5%;
+}
+.about-section li {
+    padding: 4px;
+    font-size: 1.25em;
+}
+.developer {
+    margin-bottom: 4%;
+}
+.card {
+    background-color: rgba(20, 30, 48, 0.9) !important;;
+}
+.card-body {
+    font-size: 1.15em;
+}
+.last-links {
+    color: #fcf8f3;
+    text-decoration: underline;
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css"> 
+  
+  <!--Script-->
+  <script src='tablesort.min.js'></script>
+    <!--  Sort types  -->
+    <script src='tablesort.number.min.js'></script>
+
+</head>
+<body>
+
+    <div class="content container-fluid">
+
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="#"><h2>Covid-19 tracker</h2></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/wiki.html">Wiki</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/about.html">About</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+
+        <div class="row">
+            <div class="col">
+                <div class="card gradient-color " style="width:auto; height: max-content;">
+                    <div class="card-body">
+                      <h3 class="card-title">Cases</h3>
+                      <h1 class="card-text"><%= globalSummary.data[0].confirmed %></h1>
+                      <h6 class="card-text">↑ <%= globalSummary.data[0].confirmed - globalSummary.data[1].confirmed%> today</h6>
+                    </div>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="card gradient-color " style="width:auto; height: max-content;">
+                    <div class="card-body">
+                      <h3 class="card-title">Deaths</h3>
+                      <h1 class="card-text"><%= globalSummary.data[0].deaths %></h1>
+                      <h6 class="card-text">↑ <%= globalSummary.data[0].deaths - globalSummary.data[1].deaths%> today</h6>
+                    </div>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="card gradient-color " style="width:auto; height: max-content;">
+                    <div class="card-body">
+                      <h3 class="card-title">Recovered</h3>
+                      <h1 class="card-text"><%= globalSummary.data[0].recovered %></h1>
+                      <h6 class="card-text">↑ <%= globalSummary.data[0].recovered - globalSummary.data[1].recovered%> today</h6>
+                    </div>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="col col-md-12 ">
+                <div class="card lastUpdated" style="width:auto;">
+                    <div class="card-body">
+                      <h5 class="card-title">Last Updated</h5>
+                      <% let date = new Date(globalSummary.data[0].updated_at) %>
+                      <h4 class="card-text"><%= date %></h4>
+                      
+                    </div>
+                  </div>
+            </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            
+            <div class="col">
+                <table class="table" id="cases"/>
+                    <thead class="tableHead">
+                    <tr>
+                        <th>Country</th>
+                        <th>New Confirmed</th>
+                        <th data-sort-default>Total Confirmed</th>
+                        <th>New Deaths</th>
+                        <th>Total Deaths</th>
+                        <th>Total Recovered</th>
+                        <th>Death Rate</th>
+                        <th>Recovery Rate</th>
+            
+                    </tr>
+                    </thead>
+                
+
+                    <tbody>
+                    <% for(let i=0; i < covidCases.data.length; i++) { %>
+                    <tr>
+            
+                    <td><%= covidCases.data[i].name %></td>
+                    <td class="newFormat"><%= covidCases.data[i].today.confirmed %></td>
+                    <td class="totalFormat"><%= covidCases.data[i].latest_data.confirmed %></td>
+                    <td class="newFormat"><%= covidCases.data[i].today.deaths %></td>
+                    <td class="totalFormat"><%= covidCases.data[i].latest_data.deaths %></td>
+                    <td class="newFormat"><%= covidCases.data[i].latest_data.recovered %></td>
+                            <% let deathRate =  Number(Math.round( covidCases.data[i].latest_data.calculated.death_rate +'e3')+'e-3') %>
+                            <% let recoveryRate =  Number(Math.round( covidCases.data[i].latest_data.calculated.recovery_rate +'e3')+'e-3') %>
+                    <td class="totalFormat"><%= deathRate %></td>
+                    <td class="newFormat"><%= recoveryRate %></td>
+            
+            
+                    </tr>
+                    <% } %>
+                    </tbody>
+            
+                </table>
+            </div>
+        </div>
+    </div>
+     
+     <script>
+        new Tablesort(document.getElementById('cases'), {
+            descending: true
+        });
+
+     </script>
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        
+</body>
+</html>

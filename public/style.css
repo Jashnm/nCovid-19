@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&family=Varela+Round&display=swap');
+
+body {
+    background-color: #141E30;
+    font-family: 'Varela Round', sans-serif;
+}
+.navbar {
+    background-color: #141E30;
+    color: #fcf8f3;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: larger;
+}
+.navbar-brand {
+    padding: 7px 12px;
+}
+.container-fluid {
+    padding: 3% 15% 7%;
+}
+.nav-item {
+    padding: 0 15px;
+}
+.col {
+    margin: 3% 1%;
+}
+.gradient-color {
+    background: rgb(203,53,107);
+    background: linear-gradient(90deg, rgba(203,53,107,1) 0%, rgba(255,29,85,1) 70%);
+    
+    color: #fcf8f3;
+}
+.lastUpdated {
+    background-color: #141E30;
+    color: #fcf8f3;
+    border: 0;
+    margin-left: 10px;
+}
+.card-title {
+    font-family: 'Ubuntu', sans-serif; 
+}
+.table {
+    color: #fcf8f3;
+    overflow: hidden;
+}
+th[role=columnheader]:not(.no-sort) {
+	cursor: pointer;
+}
+
+th[role=columnheader]:not(.no-sort):after {
+	content: '';
+	float: right;
+	margin-top: 7px;
+	border-width: 0 4px 4px;
+	border-style: solid;
+	border-color: #fff transparent;
+	visibility: hidden;
+	opacity: 0;
+	-ms-user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+th[aria-sort=ascending]:not(.no-sort):after {
+	border-bottom: none;
+	border-width: 4px 4px 0;
+}
+
+th[aria-sort]:not(.no-sort):after {
+	visibility: visible;
+	opacity: 0.4;
+}
+
+th[role=columnheader]:not(.no-sort):hover:after {
+	visibility: visible;
+	opacity: 1;
+}
+
+th {
+  background-color: #ff1e56; 
+  font-family: 'Ubuntu', sans-serif; 
+  font-size: large;
+}
+.newFormat {
+    color:#dab8f3 ;
+}
+.totalFormat {
+    color: #40e0d0;
+}
