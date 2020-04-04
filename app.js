@@ -11,30 +11,24 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public/"));
 app.use(bodyParser.urlencoded({extended: true}));
 
-// app.get("/", (req, res) => {
-//     const url = "https://corona-api.com/timeline";
 
-//     https.get(url, (response) => {
-//         let chunky =[];
-
-//         response.on("data", (data) => {
-//             chunky.push(data);
-//         }).on("end", () => {
-//             let globalData = Buffer.concat(chunky);
-//             let globalSummary = JSON.parse(globalData);
-
-
-//             res.render('index', {'summary': globalSummary});
-//         })
-//     })
-// })
 
 app.get("/", (req, res)=> {
 
+    var options = {
+        "method": "GET",
+        "hostname": "covid-19-data.p.rapidapi.com",
+        "port": null,
+        "path": "/totals?format=undefined",
+        "headers": {
+            "x-rapidapi-host": "covid-19-data.p.rapidapi.com",
+            "x-rapidapi-key": "0d752fcf1amsh282dcd174721505p11b110jsn97c03b2b2903"
+        }
+    };
 
-    // const url ="https://api.covid19api.com/summary";
+
     const url ="https://corona-api.com/countries";
-    const url1 = "https://corona-api.com/timeline"
+    const url1 = "https://corona.lmao.ninja/all"
     
     https.get(url, (response)=> {
         console.log(response.statusCode);

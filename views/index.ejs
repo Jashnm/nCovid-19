@@ -44,8 +44,8 @@
                 <div class="card gradient-color " style="width:auto; height: max-content;">
                     <div class="card-body">
                       <h3 class="card-title">Cases</h3>
-                      <h1 class="card-text"><%= globalSummary.data[0].confirmed %></h1>
-                      <h6 class="card-text">↑ <%= globalSummary.data[0].confirmed - globalSummary.data[1].confirmed%> today</h6>
+                      <h1 class="card-text"><%= globalSummary.cases %></h1>
+                      <h6 class="card-text">↑ <%= globalSummary.todayCases %> today</h6>
                     </div>
                   </div>
             </div>
@@ -53,8 +53,8 @@
                 <div class="card gradient-color " style="width:auto; height: max-content;">
                     <div class="card-body">
                       <h3 class="card-title">Deaths</h3>
-                      <h1 class="card-text"><%= globalSummary.data[0].deaths %></h1>
-                      <h6 class="card-text">↑ <%= globalSummary.data[0].deaths - globalSummary.data[1].deaths%> today</h6>
+                      <h1 class="card-text"><%= globalSummary.deaths %></h1>
+                      <h6 class="card-text">↑ <%= globalSummary.todayDeaths %> today</h6>
                     </div>
                   </div>
             </div>
@@ -62,24 +62,54 @@
                 <div class="card gradient-color " style="width:auto; height: max-content;">
                     <div class="card-body">
                       <h3 class="card-title">Recovered</h3>
-                      <h1 class="card-text"><%= globalSummary.data[0].recovered %></h1>
-                      <h6 class="card-text">↑ <%= globalSummary.data[0].recovered - globalSummary.data[1].recovered%> today</h6>
+                      <h1 class="card-text"><%= globalSummary.recovered %></h1>
+                      <h6 class="card-text"><%= globalSummary.active %> Active</h6>
                     </div>
                   </div>
-            </div>
-            <div class="row">
-                <div class="col col-md-12 ">
-                <div class="card lastUpdated" style="width:auto;">
-                    <div class="card-body">
-                      <h5 class="card-title">Last Updated</h5>
-                      <% let date = new Date(globalSummary.data[0].updated_at) %>
-                      <h4 class="card-text"><%= date %></h4>
-                      
-                    </div>
-                  </div>
-            </div>
             </div>
             
+        </div>
+        <div class="row">
+            <div class="col">
+            <div class="card lastUpdated" style="width:auto; height: max-content;">
+                <div class="card-body">
+                  <h5 class="card-title">Last Updated</h5>
+                  <% let d = new Date( globalSummary.updated ); %>
+                  <% let formattedDate = d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear(); %>
+                  <% let hours = (d.getHours() < 10) ? "0" + d.getHours() : d.getHours(); %>
+                  <% let minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes(); %>
+                  <% let formattedTime = hours + ":" + minutes; %>
+                  
+                  <% formattedDate = formattedDate + " " + formattedTime; %>
+
+                  <h4 class="card-text"><%= formattedDate %> IST</h4>
+                  
+                </div>
+              </div>
+        </div>
+
+        <div class="col ">
+            <div class="card lastUpdated" style="width:auto; ">
+                <div class="card-body">
+                  <h5 class="card-title">Affected Countries</h5>
+
+                  <h4 class="card-text"><%= globalSummary.affectedCountries %> IST</h4>
+                  
+                </div>
+              </div>
+        </div>
+
+        <div class="col ">
+            <div class="card lastUpdated" style="width:auto; ">
+                <div class="card-body">
+                  <h5 class="card-title">Cases per Million</h5>
+
+                  <h4 class="card-text"><%= globalSummary.casesPerOneMillion %> IST</h4>
+                  
+                </div>
+              </div>
+        </div>
+        
         </div>
         <div class="row">
             
@@ -102,8 +132,9 @@
 
                     <tbody>
                     <% for(let i=0; i < covidCases.data.length; i++) { %>
-                    <tr>
             
+                    <tr>
+                        
                     <td><%= covidCases.data[i].name %></td>
                     <td class="newFormat"><%= covidCases.data[i].today.confirmed %></td>
                     <td class="totalFormat"><%= covidCases.data[i].latest_data.confirmed %></td>
