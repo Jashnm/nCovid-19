@@ -28,7 +28,7 @@ app.get("/", (req, res)=> {
 
 
     const url ="https://corona-api.com/countries";
-    const url1 = "https://corona.lmao.ninja/all"
+    const url1 = "https://corona.lmao.ninja/all";
     
     https.get(url, (response)=> {
         console.log(response.statusCode);
