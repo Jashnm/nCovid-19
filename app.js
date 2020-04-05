@@ -15,16 +15,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/", (req, res)=> {
 
-    var options = {
-        "method": "GET",
-        "hostname": "covid-19-data.p.rapidapi.com",
-        "port": null,
-        "path": "/totals?format=undefined",
-        "headers": {
-            "x-rapidapi-host": "covid-19-data.p.rapidapi.com",
-            "x-rapidapi-key": "0d752fcf1amsh282dcd174721505p11b110jsn97c03b2b2903"
-        }
-    };
 
 
     const url ="https://corona-api.com/countries";

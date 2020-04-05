@@ -14,7 +14,7 @@
     <script src='tablesort.number.min.js'></script>
    <link rel="shortcut icon" href="/covid.png" type="image/x-icon"> 
 
-   !-- Global site tag (gtag.js) - Google Analytics -->
+   <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-101866603-5"></script>
         <script>
         window.dataLayer = window.dataLayer || [];
@@ -73,7 +73,7 @@
                     <div class="card-body">
                       <h3 class="card-title">Recovered</h3>
                       <h1 class="card-text"><%= globalSummary.recovered %></h1>
-                      <h6 class="card-text"><%= globalSummary.active %> Active</h6>
+                      <h6 class="card-text"><%= globalSummary.active %> active</h6>
                     </div>
                   </div>
             </div>
@@ -101,9 +101,9 @@
         <div class="col col-md-4 col-sm-3">
             <div class="card lastUpdated" style="width:auto; ">
                 <div class="card-body">
-                  <h5 class="card-title">Affected Countries</h5>
+                  <h5 class="card-title">Deaths per Million</h5>
 
-                  <h4 class="card-text"><%= globalSummary.affectedCountries %></h4>
+                  <h4 class="card-text"><%= globalSummary.deathsPerOneMillion %></h4>
                   
                 </div>
               </div>
