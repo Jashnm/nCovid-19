@@ -18,7 +18,7 @@ app.get("/", (req, res)=> {
 
 
     const url ="https://corona-api.com/countries";
-    const url1 = "https://corona.lmao.ninja/all";
+    const urlAll = "https://corona.lmao.ninja/all";
     
     https.get(url, (response)=> {
         console.log(response.statusCode);
@@ -31,7 +31,7 @@ app.get("/", (req, res)=> {
         let allData   = Buffer.concat(chunks);
         let covidCases = JSON.parse(allData);
         
-            https.get(url1, (response) => {
+            https.get(urlAll, (response) => {
 
                 let chunky =[];
 
@@ -63,6 +63,53 @@ app.get("/", (req, res)=> {
 
 });
 
+app.get("/india", (req, res) => {
+    
+        let url = "https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise";
+        let urlContact = "https://api.rootnet.in/covid19-in/contacts";
+
+        https.get(url, (response)=> {
+            
+            let chunks = [];
+
+            response.on("data", (data)=> {
+                chunks.push(data);
+            }).on('end', () =>{
+            let citiesData   = Buffer.concat(chunks);
+            let indiaData = JSON.parse(citiesData);
+
+
+                https.get(urlContact, (response)=> {
+                
+                    let chunky = [];
+        
+                    response.on("data", (data)=> {
+                        chunky.push(data);
+                    }).on('end', () =>{
+                    let helpline  = Buffer.concat(chunky);
+                    let helplineData = JSON.parse(helpline);
+
+
+                            
+                        res.render('india', {indiaData: indiaData, helplineData: helplineData});
+            });
+
+        });
+
+    });
+
+
+        
+        });
+
+    });
+    app.get('/wiki', (req, res) => {
+        res.render('wiki');
+    });
+
+    app.get('/about', (req, res) => {
+        res.render('about');
+    })
 
 
 app.listen(process.env.PORT || 4000, () => {
