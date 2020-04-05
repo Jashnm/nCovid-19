@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const https = require("https");
 
 
+
 const app = express();
 
 app.set("view engine", "ejs");
@@ -65,7 +66,7 @@ app.get("/", (req, res)=> {
 
 app.get("/india", (req, res) => {
     
-        let url = "https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise";
+        let url = "https://api.covid19india.org/data.json";
         let urlContact = "https://api.rootnet.in/covid19-in/contacts";
 
         https.get(url, (response)=> {
@@ -109,7 +110,7 @@ app.get("/india", (req, res) => {
 
     app.get('/about', (req, res) => {
         res.render('about');
-    })
+    });
 
 
 app.listen(process.env.PORT || 4000, () => {

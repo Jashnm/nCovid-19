@@ -33,6 +33,72 @@
 
       <h1>Stats and details for India</h1>
 
+          <div class="row">
+            <div class="col col-sm-3 col-md-4">
+                <div class="card gradient-color " style="width:auto; height: max-content;">
+                    <div class="card-body">
+                      <h3 class="card-title">Cases</h3>
+                      <h1 class="card-text"><%= indiaData.statewise[0].confirmed %></h1>
+                      <h6 class="card-text">↑ <%= indiaData.statewise[0].deltaconfirmed %> today</h6>
+                    </div>
+                  </div>
+            </div>
+            <div class="col col-sm-3 col-md-4">
+                <div class="card gradient-color " style="width:auto; height: max-content;">
+                    <div class="card-body">
+                      <h3 class="card-title">Deaths</h3>
+                      <h1 class="card-text"><%= indiaData.statewise[0].deaths %></h1>
+                      <h6 class="card-text">↑ <%= indiaData.statewise[0].deltadeaths %> today</h6>
+                    </div>
+                  </div>
+            </div>
+            <div class="col col-sm-3 col-md-4">
+                <div class="card gradient-color " style="width:auto; height: max-content;">
+                    <div class="card-body">
+                      <h3 class="card-title">Recovered</h3>
+                      <h1 class="card-text"><%= indiaData.statewise[0].recovered %></h1>
+                      <h6 class="card-text">↑ <%= indiaData.statewise[0].deltarecovered %> today</h6>
+                    </div>
+                  </div>
+            </div>
+            
+        </div>
+
+        <div class="row">
+            <div class="col col-md-4 col-sm-3">
+              <div class="card lastUpdated" style="width:auto; height: max-content;">
+                <div class="card-body">
+                  <h5 class="card-title">Last Updated</h5>
+
+                  <h4 class="card-text"><%= indiaData.statewise[0].lastupdatedtime %> IST</h4>
+                  
+                </div>
+              </div>
+            </div>
+
+            <div class="col col-md-4 col-sm-3">
+              <div class="card lastUpdated" style="width:auto; ">
+                  <div class="card-body">
+                    <h5 class="card-title">Active cases</h5>
+
+                    <h4 class="card-text"><%= indiaData.statewise[0].active %></h4>
+                    
+                  </div>
+                </div>
+            </div>
+
+            <div class="col col-md-4 col-sm-3">
+              <div class="card lastUpdated" style="width:auto; height: max-content;">
+                  <div class="card-body">
+                    <h5 class="card-title">Central Helpline Number: </h5>
+  
+                    <h4 class="card-text">+91-11-23978046</h4>
+                    
+                  </div>
+                </div>
+              </div>
+        
+        </div>
         <div class="row">
             
             <div class="col col-md-6">
@@ -50,14 +116,14 @@
                 
 
                     <tbody>
-                      <% for(let i=0; i < indiaData.data.statewise.length; i++) { %>
+                      <% for(let i=1; i < indiaData.statewise.length; i++) { %>
                     <tr>
                         
-                        <td><%= indiaData.data.statewise[i].state %></td>
-                        <td class="newFormat"><%= indiaData.data.statewise[i].confirmed %></td>
-                        <td class="totalFormat"><%= indiaData.data.statewise[i].deaths %></td>
-                        <td class="newFormat"><%= indiaData.data.statewise[i].recovered %></td>
-                        <td class="totalFormat"><%= indiaData.data.statewise[i].active %></td>
+                        <td><%= indiaData.statewise[i].state %></td>
+                        <td class="newFormat"><%= indiaData.statewise[i].confirmed %></td>
+                        <td class="totalFormat"><%= indiaData.statewise[i].deaths %></td>
+                        <td class="newFormat"><%= indiaData.statewise[i].recovered %></td>
+                        <td class="totalFormat"><%= indiaData.statewise[i].active %></td>
                 
             
                     </tr>
@@ -67,7 +133,7 @@
                 </table>
             </div>
 
-        <div class="col">
+        <div class="col col-md-6">
             <table class="table" id="cases"/>
                 <thead class="tableHead">
                 <tr>
