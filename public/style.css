@@ -27,6 +27,11 @@ body {
     background: linear-gradient(90deg, rgba(203,53,107,1) 0%, rgba(255,29,85,1) 70%);
     
     color: #fcf8f3;
+    transition: 0.5s;
+}
+.gradient-color:hover {
+    background: rgb(203,53,107);
+    background: linear-gradient(90deg, rgba(255,29,85,1) 0%, rgba(203,53,107,1) 70%);
 }
 .lastUpdated {
     background-color: #141E30;

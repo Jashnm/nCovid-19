@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ncovid-19 live Coronavirus tracker</title>
+    <title>COVID-19 India stats</title>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="indiaStyle.css"> 
@@ -107,8 +107,11 @@
                     <tr>
                         <th>State</th>
                         <th data-sort-default>Confirmed</th>
-                        <th>Death</th>
+                        <th>New Confirmed</th>
+                        <th>Deaths</th>
+                        <th>New Deaths</th>
                         <th>Recovered</th>
+                        <th>New Recovered</th>
                         <th>Active</th>
             
                     </tr>
@@ -120,9 +123,12 @@
                     <tr>
                         
                         <td><%= indiaData.statewise[i].state %></td>
-                        <td class="newFormat"><%= indiaData.statewise[i].confirmed %></td>
+                        <td class="totalFormat"><%= indiaData.statewise[i].confirmed %></td>
+                        <td class="newFormat"> <%= indiaData.statewise[i].deltaconfirmed %></td>
                         <td class="totalFormat"><%= indiaData.statewise[i].deaths %></td>
-                        <td class="newFormat"><%= indiaData.statewise[i].recovered %></td>
+                        <td class="newFormat"> <%= indiaData.statewise[i].deltadeaths %></td>
+                        <td class="totalFormat"><%= indiaData.statewise[i].recovered %></td>
+                        <td class="newFormat"> <%= indiaData.statewise[i].deltarecovered %></td>
                         <td class="totalFormat"><%= indiaData.statewise[i].active %></td>
                 
             
@@ -133,11 +139,11 @@
                 </table>
             </div>
 
-        <div class="col">
+        <div class="col col-md-2 col-lg-2 col-sm-2">
             <table class="table" id="cases"/>
                 <thead class="tableHead">
                 <tr>
-                    <th data-sort-default="">State</th>
+                    <th>State</th>
                     <th>Helpline Number</th>
         
                 </tr>
@@ -161,6 +167,7 @@
       </div>
 
       <p>Data for India here might be different from that on the home page as this data is unofficial. It is crowdsourced from different trusted sources and gets updated faster too.</p>
+      <p>For official data, click <a href="/india-official" class="last-links">here</a></p>
     </div>
      
      <script>

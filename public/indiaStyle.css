@@ -3,6 +3,7 @@
 body {
     background-color: #141E30;
     font-family: 'Varela Round', sans-serif;
+    color: #fcf8f3;
 }
 .navbar {
     background-color: #141E30;
@@ -22,21 +23,30 @@ body {
 .col {
     margin: 3% 0;
 }
+@media screen and (max-width: 992px) {
+    .row {
+        margin-left: -18%;
+    }
+}
 h1 {
     margin: 3% 2% 2%;
     color: #fcf8f3;
 }
-td {
-    padding: 0.85rem !important;
-}
 table {
-    border-bottom: 1pt solid #ff1e56;
+    border-bottom: 1pt solid #dab8f3;
 }
 .gradient-color {
-    background: rgb(203,53,107);
-    background: linear-gradient(90deg, rgba(203,53,107,1) 0%, rgba(255,29,85,1) 70%);
-    
-    color: #fcf8f3;
+    background: #614385;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #516395, #614385);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #516395, #614385); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    transition: 0.5s;
+}
+
+.gradient-color:hover {
+    background: #614385; 
+    background: -webkit-linear-gradient(to left, #516395, #614385); 
+    background: linear-gradient(to left, #516395, #614385); 
 }
 .lastUpdated {
     background-color: #141E30;
@@ -86,16 +96,20 @@ th[role=columnheader]:not(.no-sort):hover:after {
 }
 
 th {
-  background-color: #ff1e56; 
+  background-color: #5c348d; 
   font-family: 'Ubuntu', sans-serif; 
   font-size: large;
 }
 .newFormat {
-    color:#dab8f3 ;
+    color:#ff1e56 ;
 }
 .totalFormat {
     color: #40e0d0;
 }
 p {
     color: #fcf8f3;
+}
+.last-links {
+    color: #fcf8f3;
+    text-decoration: underline;
 }
