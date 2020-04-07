@@ -99,4 +99,14 @@ th {
 
 #statMap {
     margin-top: 5%;
+    height: 980px;
+}
+
+@media (max-width: 480px) {
+    #statMap {
+        height: 600px;
+    }
+    .container-fluid {
+        padding: 3% 10% 7%;
+    }
 }
