@@ -133,8 +133,8 @@ app.get("/india", (req, res) => {
 
     });
 
-    app.get('/stat-map', (req, res) => {
-        res.render('stat-map');
+    app.get('/stats-map', (req, res) => {
+        res.render('stats-map');
     });
 
 
