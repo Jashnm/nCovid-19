@@ -133,6 +133,10 @@ app.get("/india", (req, res) => {
 
     });
 
+    app.get('/stat-map', (req, res) => {
+        res.render('stat-map');
+    });
+
 
 app.listen(process.env.PORT || 4000, () => {
     console.log("Port started!");

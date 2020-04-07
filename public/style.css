@@ -12,7 +12,6 @@ body {
 }
 .navbar-brand {
     padding: 5px 2px;
-    white-space: normal;
 }
 .container-fluid {
     padding: 3% 15% 7%;
@@ -96,4 +95,8 @@ th {
 }
 .totalFormat {
     color: #40e0d0;
+}
+
+#statMap {
+    margin-top: 5%;
 }
