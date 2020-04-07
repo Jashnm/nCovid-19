@@ -96,7 +96,11 @@ th {
 .totalFormat {
     color: #40e0d0;
 }
-
+.heading {
+    color: #fcf8f3;
+    margin-top: 2%;
+    padding: 2px 15px;
+}
 #statMap {
     margin-top: 5%;
     height: 980px;
