@@ -8,7 +8,7 @@ const mymap = L.map('statMap')
             minZoom: 2,
             id: 'mapbox/dark-v10',
 
-            accessToken: 'sk.eyJ1IjoiamFzaG4iLCJhIjoiY2s4cWJhYm03MDFuYjNmdGZwZ3h3aW01YSJ9.JmizXP_rYCf_hJlwBTMpAQ'
+            accessToken: 'pk.eyJ1IjoiamFzaG4iLCJhIjoiY2s4bjFxbDE5MDRzNzNsbHZuNGtmN2s0ZyJ9.2u-WWldIklEwO6T5S4vcjA'
         });
 
         tiles.addTo(mymap)
