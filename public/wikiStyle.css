@@ -12,7 +12,7 @@ body {
     font-size: larger;
 }
 .navbar-brand {
-    padding: 5px;
+    padding: 5px 0;
 }
 .container-fluid {
     padding: 3% 15% 7%;

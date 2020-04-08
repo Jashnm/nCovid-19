@@ -3,7 +3,7 @@ const mymap = L.map('statMap')
                             .setMaxBounds([[-84, -189], [84,190]]);
 
         const tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
             maxZoom: 18,
             minZoom: 2,
             id: 'mapbox/dark-v10',
@@ -23,15 +23,26 @@ const mymap = L.map('statMap')
 
             // console.log(latitude);
             for(let i=0; i < data.length; i++) {
-                const {lat:lat, long:lng} = data[i].countryInfo;
+                const {lat:lat, long:lng, flag: countryFlag} = data[i].countryInfo;
                 const {tests:testsPerformed, country:country, cases:totalCases, deaths:totalDeaths} = data[i];
+
+                const img = document.createElement('img');
+                img.src = countryFlag
+                img.width = '200';
 
                 L.circle([lat, lng], Number(totalCases)*5, {
                     color: 'red',
+                    opacity: 0.7,
                     fillColor: '#f03',
-                    fillOpacity: 0.5
-                }).addTo(mymap).bindPopup(
-                        '<strong>' + country  + '</strong>' + '<br>' + "Cases: " + totalCases + '<br>' + "Deaths: " + totalDeaths + '<br>' + "Tests: " + testsPerformed
+                    fillOpacity: 0.5,
+                }).addTo(mymap).bindTooltip(
+                        '<a style="font-size:x-large; color:#faf4f4;">' + country  +
+                        '<img src = ' + countryFlag +' width ="35" style="padding:0 5px 0 5px; margin-left:7px;">' +   '</a><br><br> ' +
+                        '<li style="padding-bottom:0.1vh; font-weight">' + 'Cases: ' + totalCases +  '</li>' + 
+                        '<li style="padding-bottom:0.1vh">' + "Deaths: " + totalDeaths + '</li>' +
+                        '<li style="padding-bottom:0.1vh">' + "Tests: " + testsPerformed + '</li>'
                         );
+
+                    
             }
         }
