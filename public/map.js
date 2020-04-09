@@ -1,3 +1,5 @@
+let donkey = config.MY_DEY;
+
 const mymap = L.map('statMap')
                             .setView([25.505, 74.09], 3)
                             .setMaxBounds([[-84, -189], [84,190]]);
@@ -8,7 +10,7 @@ const mymap = L.map('statMap')
             minZoom: 2,
             id: 'mapbox/dark-v10',
 
-            accessToken: 'pk.eyJ1IjoiamFzaG4iLCJhIjoiY2s4bjFxbDE5MDRzNzNsbHZuNGtmN2s0ZyJ9.2u-WWldIklEwO6T5S4vcjA'
+            accessToken: donkey
         });
 
         tiles.addTo(mymap)
