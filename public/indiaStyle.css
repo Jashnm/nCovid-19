@@ -23,11 +23,7 @@ body {
 .col {
     margin: 3% 0;
 }
-@media screen and (max-width: 992px) {
-    .row {
-        margin-left: -18%;
-    }
-}
+
 h1 {
     margin: 3% 2% 2%;
     color: #fcf8f3;
@@ -61,6 +57,12 @@ table {
     color: #fcf8f3;
     overflow: hidden;
 }
+.table-wrapper {
+    max-height: 650px;
+    overflow-y: auto;
+    display: inline-block;
+  }
+
 th[role=columnheader]:not(.no-sort) {
 	cursor: pointer;
 }
@@ -94,7 +96,6 @@ th[role=columnheader]:not(.no-sort):hover:after {
 	visibility: visible;
 	opacity: 1;
 }
-
 th {
   background-color: #5c348d; 
   font-family: 'Ubuntu', sans-serif; 

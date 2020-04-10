@@ -14,7 +14,7 @@
     <script src='tablesort.number.min.js'></script>
    <link rel="shortcut icon" href="/covid.png" type="image/x-icon"> 
 
-   <!-- Global site tag (gtag.js) - Google Analytics -->
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>   <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-101866603-5"></script>
         <script>
         window.dataLayer = window.dataLayer || [];
@@ -39,7 +39,7 @@
                     <div class="card-body">
                       <h3 class="card-title">Cases</h3>
                       <h1 class="card-text"><%= indiaData.statewise[0].confirmed %></h1>
-                      <h6 class="card-text">↑ <%= indiaData.statewise[0].deltaconfirmed %> today</h6>
+                      <h6 class="card-text">↑ <%= indiaData.statewise[0].deltaconfirmed %></h6>
                     </div>
                   </div>
             </div>
@@ -48,7 +48,7 @@
                     <div class="card-body">
                       <h3 class="card-title">Deaths</h3>
                       <h1 class="card-text"><%= indiaData.statewise[0].deaths %></h1>
-                      <h6 class="card-text">↑ <%= indiaData.statewise[0].deltadeaths %> today</h6>
+                      <h6 class="card-text">↑ <%= indiaData.statewise[0].deltadeaths %></h6>
                     </div>
                   </div>
             </div>
@@ -57,7 +57,7 @@
                     <div class="card-body">
                       <h3 class="card-title">Recovered</h3>
                       <h1 class="card-text"><%= indiaData.statewise[0].recovered %></h1>
-                      <h6 class="card-text">↑ <%= indiaData.statewise[0].deltarecovered %> today</h6>
+                      <h6 class="card-text">↑ <%= indiaData.statewise[0].deltarecovered %></h6>
                     </div>
                   </div>
             </div>
@@ -101,9 +101,10 @@
         </div>
         <div class="row">
             
-            <div class="col">
+            <div class="col table-responsive table-wrapper">
                 <table class="table" id="cases"/>
-                    <thead class="tableHead">
+                    <thead class="tableHead sticky-top">
+                      <input type="text" id="search" placeholder="Search State" style="margin-bottom: 10px" class="form-control-sm"></input>
                     <tr>
                         <th>State</th>
                         <th data-sort-default>Confirmed</th>
@@ -138,9 +139,10 @@
             
                 </table>
             </div>
-
-        <div class="col col-md-2 col-lg-2 col-sm-2">
-            <table class="table" id="cases"/>
+        </div>
+        <div class="row">
+        <div class="col table-responsive table-wrapper">
+            <table class="table" id="helpline"/>
                 <thead class="tableHead">
                 <tr>
                     <th>State</th>
@@ -172,13 +174,26 @@
      
      <script>
         new Tablesort(document.getElementById('cases'), {
-            descending: true
-        });
+  descending: true
+});
 
+$("#search").keyup(function () {
+    let value = this.value.toLowerCase().trim();
+
+    $("table tr").each(function (index) {
+        if (!index) return;
+        $(this).find("td").each(function () {
+            let id = $(this).text().toLowerCase().trim();
+            let not_found = (id.indexOf(value) == -1);
+            $(this).closest('tr').toggle(!not_found);
+            return not_found;
+        });
+    });
+});
      </script>
-     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     
         
 </body>
 </html>

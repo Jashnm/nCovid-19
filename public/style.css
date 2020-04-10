@@ -19,11 +19,6 @@ body {
 .nav-item {
     padding: 0 15px;
 }
-@media screen and (max-width: 992px) {
-    .row {
-        margin-left: -18%;
-    }
-}
 .col {
     margin: 3% 0;
 }
@@ -51,6 +46,11 @@ body {
     color: #fcf8f3;
     overflow: hidden;
 }
+.table-wrapper {
+    max-height: 650px;
+    overflow-y: auto;
+    display: inline-block;
+  }
 th[role=columnheader]:not(.no-sort) {
 	cursor: pointer;
 }
