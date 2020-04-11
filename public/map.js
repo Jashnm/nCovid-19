@@ -30,7 +30,7 @@ const mymap = L.map('statMap')
                 img.src = countryFlag
                 img.width = '200';
 
-                L.circle([lat, lng], Number(totalCases)*5, {
+                L.circle([lat, lng], Math.sqrt(Number(totalCases))*775, {
                     color: 'red',
                     opacity: 0.7,
                     fillColor: '#f03',
