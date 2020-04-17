@@ -18,7 +18,7 @@ app.get("/", (req, res)=> {
 
 
     const url ="https://corona-api.com/countries";
-    const urlAll = "https://corona.lmao.ninja/all";
+    const urlAll = "https://corona.lmao.ninja/v2/all";
     
     https.get(url, (response)=> {
         console.log(response.statusCode);
@@ -42,17 +42,9 @@ app.get("/", (req, res)=> {
                     let globalSummary = JSON.parse(summary);
 
 
-
-
-
-
                     res.render('index', {covidCases: covidCases, globalSummary: globalSummary});
                 });
             });
-
-            // const countryName = covidCases.Countries[1].Country;
-
-            // res.send("It's running!" + countryName);
 
             
         });
