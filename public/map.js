@@ -14,7 +14,7 @@ const mymap = L.map('statMap')
         tiles.addTo(mymap)
 
       
-        const statUrl ='https://corona.lmao.ninja/countries';
+        const statUrl ='https://corona.lmao.ninja/v2/countries';
         getData();
         async function getData() {
 
